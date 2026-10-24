@@ -1,0 +1,19 @@
+{
+  "name": "task-cli",
+  "version": "1.0.0",
+  "description": "Um CLI de um Task Tracker",
+  "license": "ISC",
+  "author": "Manuela Ferreira",
+  "type": "module",
+  "main": "task-cli/task-cli.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/task-cli.js"
+  },
+  "dependencies": {
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2"
+  }
+}
