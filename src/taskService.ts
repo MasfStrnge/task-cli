@@ -1,12 +1,12 @@
 import { type Task } from "./type.js";
 import { readTasksFromFile, writeTaskFromFile } from "./storage.js";
 
-export async function addTask( description: string): Promise<void> {
+export async function addTask(description: string): Promise<void> {
 
     const tasks: Task[] = await readTasksFromFile();
 
     const novaTask: Task = {
-        id: tasks.length,
+        id: tasks.length + 1,
         description: description,
         status: "todo",
         createdAt: new Date().toISOString(),
@@ -17,7 +17,6 @@ export async function addTask( description: string): Promise<void> {
     writeTaskFromFile(tasks);
 
 };
-
 
 export async function updateTask(task_id: number, newDescription: string): Promise<void> {
     
@@ -42,4 +41,19 @@ export async function updateTask(task_id: number, newDescription: string): Promi
 
     }
    
+}
+
+export async function deleteTask(task_id: number): Promise<void> {
+    try {
+        
+        const tasks: Task[] = await readTasksFromFile();
+
+        const taskList: Task[] = tasks.filter(t => t.id != task_id);
+
+        await writeTaskFromFile(taskList);
+
+    } catch(error) {
+
+        console.error("Error in deleting the task!", error);
+    }
 }

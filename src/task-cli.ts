@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { addTask, updateTask } from './taskService.js'
+import { addTask, updateTask, deleteTask } from './taskService.js'
 
 startPrompt();
 
@@ -16,7 +16,7 @@ async function startPrompt() {
 
                 const description = argumentos[1] ? argumentos[1].toString() : '';
                 addTask(description);
-                console.log("Task was added successfully");
+                console.log("Task was added successfully!!");
 
                 break;
 
@@ -30,11 +30,20 @@ async function startPrompt() {
                 if(updateDescription) {
 
                     updateTask(task_id!, updateDescription);
-                    console.log("Task " + task_id + "was updated successfully!");
+                    console.log("Task " + task_id + " was updated successfully!!");
 
                 }
 
                 break;
+            }
+
+            case 'delete': {
+
+                const task_id = Number(argumentos[1]);
+                deleteTask(task_id);
+                console.log("Task " + task_id + " was deleted successfully!!");
+                break;
+
             }
 
             default: {
@@ -44,6 +53,7 @@ async function startPrompt() {
                 console.log("List of commands:")
                 console.log("task-cli add [description] - to add a task");
                 console.log("task-cli update 1 [New Description] - to update an existing task");
+                console.log("task-cli delete 1 - to delete an existing task");
                 
                 break;
                 
