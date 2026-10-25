@@ -78,5 +78,25 @@ export async function markTaskInProgress(task_id: Number): Promise<void> {
         
 }
 
+export async function markTaskDone(task_id: Number): Promise<void> {
+   try {
+    //será que tem que ter await antes do readTasksFromFile() porque a função retorna uma promessa?
+        const array_tasks: Task[] = await readTasksFromFile();
+
+        const task = array_tasks.find(task => task.id == task_id);
+
+        if(task) {
+            task.status = "done";
+            await writeTaskFromFile(array_tasks);
+
+            } 
+
+    } catch(error) {
+
+        console.log("Error in changing task's status!", error);
+    }        
+        
+}
+
 
 

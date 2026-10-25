@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { addTask, updateTask, deleteTask, markTaskInProgress } from './taskService.js'
+import { addTask, updateTask, deleteTask, markTaskInProgress, markTaskDone } from './taskService.js'
 
 startPrompt();
 
@@ -54,6 +54,14 @@ async function startPrompt() {
 
             }
 
+            case 'mark-done': {
+                const task_id = Number(argumentos[1]);
+                markTaskDone(task_id);
+                console.log("Task " + task_id + " was marked as DONE successfully!!");
+                break;
+
+            }
+
             default: {
 
                 console.log("Welcome to Task Tracker 1.0!");
@@ -63,7 +71,9 @@ async function startPrompt() {
                 console.log("task-cli add [description] - to add a task");
                 console.log("task-cli update 1 [New Description] - to update an existing task");
                 console.log("task-cli delete 1 - to delete an existing task");
+
                 console.log("task-cli mark-in-progress 1 - to mark an existing task as in-progress");
+                console.log("task-cli mark-done 1 - to mark an existing task as done");
 
                 
                 break;
