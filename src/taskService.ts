@@ -57,3 +57,26 @@ export async function deleteTask(task_id: number): Promise<void> {
         console.error("Error in deleting the task!", error);
     }
 }
+
+export async function markTaskInProgress(task_id: Number): Promise<void> {
+   try {
+    //será que tem que ter await antes do readTasksFromFile() porque a função retorna uma promessa?
+        const array_tasks: Task[] = await readTasksFromFile();
+
+        const task = array_tasks.find(task => task.id == task_id);
+
+        if(task) {
+            task.status = "in-progress";
+            await writeTaskFromFile(array_tasks);
+
+            } 
+
+    }catch(error) {
+
+        console.log("Error in changing task's status!", error);
+    }        
+        
+}
+
+
+
