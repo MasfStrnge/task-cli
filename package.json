@@ -6,6 +6,9 @@
   "author": "Manuela Ferreira",
   "type": "module",
   "main": "task-cli/task-cli.ts",
+  "bin": {
+    "task-cli": "./dist/task-cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "tsc && node dist/task-cli.js"
@@ -14,6 +17,6 @@
     "typescript": "^7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2"
+    "@types/node": "^26.6.6"
   }
 }
