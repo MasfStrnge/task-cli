@@ -9,8 +9,8 @@ export async function addTask(description: string): Promise<void> {
         id: tasks.length + 1,
         description: description,
         status: "todo",
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        createdAt: new Date().toLocaleDateString("en-GB"),
+        updatedAt: new Date().toLocaleDateString("en-GB")
     };
 
     tasks.push(novaTask);
@@ -97,6 +97,18 @@ export async function markTaskDone(task_id: Number): Promise<void> {
     }        
         
 }
-
-
-
+export async function listTasks(status: String) {
+    try {
+        //será que tem que ter await antes do readTasksFromFile() porque a função retorna uma promessa?
+        const task_list = await readTasksFromFile();
+        if (status == '') {
+            return task_list;
+        }
+        else if (status == 'todo' || status == 'in-progress' || status == 'done') {
+            return task_list.filter(task => task.status === status);
+        }
+    }
+    catch (error) {
+        console.log("Error in listing tasks!", error);
+    }
+}
