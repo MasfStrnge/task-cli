@@ -75,7 +75,6 @@ async function startPrompt() {
             }
             default: {
                 console.log("Welcome to Task Tracker 1.0!");
-<<<<<<< HEAD
                 console.log("Usage: task-cli <command>\n");
 
                 console.log("List of commands:\n")
@@ -83,13 +82,6 @@ async function startPrompt() {
                 console.log("task-cli update 1 [New Description] - to update an existing task");
                 console.log("task-cli delete 1 - to delete an existing task\n");
 
-=======
-                console.log("Usage: task-cli <command>");
-                console.log("List of commands:");
-                console.log("task-cli add [description] - to add a task");
-                console.log("task-cli update 1 [New Description] - to update an existing task");
-                console.log("task-cli delete 1 - to delete an existing task");
->>>>>>> feature/list-tasks
                 console.log("task-cli mark-in-progress 1 - to mark an existing task as in-progress");
                 console.log("task-cli mark-done 1 - to mark an existing task as done");
                 console.log("task-cli list [status] - to list tasks by status (todo, in-progress, done) or all tasks if no status is provided");
